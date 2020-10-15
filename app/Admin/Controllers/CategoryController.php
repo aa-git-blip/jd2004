@@ -7,15 +7,26 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-
+use Encore\Admin\Layout\Content;
+use Encore\Admin\Tree;
 class CategoryController extends AdminController
 {
+
     /**
      * Title for current resource.
      *
      * @var string
      */
     protected $title = 'Category';
+
+    public function index(Content $content)
+    {
+        $tree = new Tree(new Category);
+
+        return $content
+            ->header('树状模型')
+            ->body($tree);
+    }
 
     /**
      * Make a grid builder.

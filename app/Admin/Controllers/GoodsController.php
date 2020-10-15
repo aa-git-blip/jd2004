@@ -93,7 +93,6 @@ class GoodsController extends AdminController
         $form->number('add_time', __('Add time'));
         $form->switch('is_delete', __('Is delete'));
         $form->number('sale_num', __('Sale num'));
-
         return $form;
     }
 }
