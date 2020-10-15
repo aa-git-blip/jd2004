@@ -32,7 +32,7 @@ class LoginController extends Controller
         ]);
         //表单验证
         if($validator->fails()){
-            return redirect('/reg')
+            return redirect('/register')
             ->withErrors($validator)
             ->withInput();
         }
