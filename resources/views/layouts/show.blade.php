@@ -11,6 +11,11 @@
     <link rel="stylesheet" type="text/css" href="/static/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/widget-cartPanelView.css" />
+
+        <link rel="stylesheet" type="text/css" href="/static/css/pages-list.css" />
+
+    <link rel="stylesheet" type="text/css" href="/static/css/pages-zoom.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/pages-seckill-item.css" />
 </head>
 
 <body>

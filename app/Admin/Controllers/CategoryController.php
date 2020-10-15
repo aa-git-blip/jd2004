@@ -91,7 +91,7 @@ class CategoryController extends AdminController
     protected function form()
     {
         $form = new Form(new Category());
-
+        // $Category=new Category;
         $form->text('cat_name', __('Cat name'));
         $form->text('keywords', __('Keywords'));
         $form->text('cat_desc', __('Cat desc'));
@@ -105,7 +105,10 @@ class CategoryController extends AdminController
         $form->switch('grade', __('Grade'));
         $form->text('filter_attr', __('Filter attr'));
         $form->switch('float_percent', __('Float percent'));
-
+        // $form->select('parent_id',__('上级'))
+        // ->options($Category::selectOptions(function($Category){
+        //     return $Category->where('level','<>',2);
+        // }));
         return $form;
     }
 }

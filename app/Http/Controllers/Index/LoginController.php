@@ -57,6 +57,9 @@ class LoginController extends Controller
     //登录方法
     function logindo(Request $request){
         $post=$request->except('_token');
+        if($post['name']==''){
+            return redirect('/login')->with('msg','非法操作');
+        }
         //dd($post);
         $add=$_SERVER['REMOTE_ADDR'];
         $reg='/^1[3|4|5|6|7|8|9]\d{9}$/';
