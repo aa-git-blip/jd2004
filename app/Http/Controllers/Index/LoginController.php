@@ -15,7 +15,7 @@ class LoginController extends Controller
     }
     function regdo(Request $request){
         //验证器可用     不需要make参数
-        // //1111111111111111111
+
         $validator = Validator($request->all(),[
             'name' => 'required|unique:user',
             'password' => 'required',
