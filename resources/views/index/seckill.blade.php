@@ -25,7 +25,7 @@
 					<div class="zoom">
 						<!--默认第一个预览-->
 						<div id="preview" class="spec-preview">
-							<span class="jqzoom"><img jqimg="/static/img/_/b1.png" src="/static/img/_/s1.png" /></span>
+							<span class="jqzoom"><img jqimg="/static/img/_/b1.png" src="/upload/{{$goods->goods_img}}" width="400px" height="500"/></span>
 						</div>
 						<!--下方的缩略图-->
 						<div class="spec-scroll">
@@ -53,7 +53,7 @@
 				</div>
 				<div class="fr itemInfo-wrap">
 					<div class="sku-name">
-						<h4>Apple iPhone 6s（A1700）64G玫瑰金色 移动通信电信4G手机</h4>
+						<h4>{{$goods->goods_name}}</h4>
 					</div>
 					<div class="news">
 						<span><img src="/static/img/_/clock.png"/>品优秒杀</span>
@@ -67,7 +67,7 @@
 							</div>
 							<div class="fl price">
 								<i>¥</i>
-								<em>5299.00</em>
+                                    <em>{{$goods->shop_price}}</em>
 								<span>降价通知</span>
 							</div>
 							<div class="fr remark">

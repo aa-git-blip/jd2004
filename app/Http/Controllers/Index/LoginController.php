@@ -112,4 +112,8 @@ class LoginController extends Controller
         session(['login'=>$user]);
             return redirect('/');
     }
+    function outlogin(){
+        session(['login'=>null]);
+        return redirect('/login');
+    }
 }

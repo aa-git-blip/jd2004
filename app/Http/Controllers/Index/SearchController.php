@@ -13,8 +13,9 @@ class SearchController extends Controller
         $data=Goods::paginate($pageSize);
         return view('index.search',['data'=>$data]);
     }
-    function seckill(){
-
-        return view('index.seckill');
+    function seckill($goods_id){
+        $goods=Goods::find($goods_id);
+        //dd($goods);
+        return view('index.seckill',['goods'=>$goods]);
     }
 }
