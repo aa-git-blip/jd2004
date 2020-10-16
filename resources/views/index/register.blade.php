@@ -9,7 +9,7 @@
 		</div>
 		<!--register-->
 		<div class="registerArea">
-			<h3>注册新用户<span class="go">我有账号，去<a href="{{url('/login')}}" target="_blank">登陆</a></span></h3>
+			<h3>注册新用户<span class="go">我有账号，去<a href="{{url('/login')}}" >登陆</a></span></h3>
 			<div class="info">
                 {{session('msg')}}
                 @if ($errors->any())
