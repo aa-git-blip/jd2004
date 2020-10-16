@@ -92,19 +92,19 @@ class CategoryController extends AdminController
     {
         $form = new Form(new Category());
         // $Category=new Category;
-        $form->text('cat_name', __('Cat name'));
-        $form->text('keywords', __('Keywords'));
-        $form->text('cat_desc', __('Cat desc'));
-        $form->number('parent_id', __('Parent id'));
-        $form->switch('sort_order', __('Sort order'))->default(50);
-        $form->text('template_file', __('Template file'));
-        $form->text('measure_unit', __('Measure unit'));
-        $form->switch('show_in_nav', __('Show in nav'));
-        $form->text('style', __('Style'));
-        $form->switch('is_show', __('Is show'))->default(1);
-        $form->switch('grade', __('Grade'));
-        $form->text('filter_attr', __('Filter attr'));
-        $form->switch('float_percent', __('Float percent'));
+        $form->text('cat_name', __('分类名'));
+        // $form->text('keywords', __('Keywords'));
+        // $form->text('cat_desc', __('Cat desc'));
+        $form->select('parent_id', __('父ID'))->options(Category::selectOptions());
+        $form->number('sort_order', __('排序'))->default(50);
+        // $form->text('template_file', __('Template file'));
+        // $form->text('measure_unit', __('Measure unit'));
+        // $form->switch('show_in_nav', __('Show in nav'));
+        // $form->text('style', __('Style'));
+        // $form->switch('is_show', __('Is show'))->default(1);
+        // $form->switch('grade', __('Grade'));
+        // $form->text('filter_attr', __('Filter attr'));
+        // $form->switch('float_percent', __('Float percent'));
         // $form->select('parent_id',__('上级'))
         // ->options($Category::selectOptions(function($Category){
         //     return $Category->where('level','<>',2);

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Str;
 class LoginController extends Controller
 {
     //
@@ -47,10 +48,17 @@ class LoginController extends Controller
         unset($data['repwd']);
         unset($data['m1']);
         $res=UserModel::insert($data);
+        //发送激活码
+        // $active_code=Str::random(64);
+        // $redis_active_key='ss:user:active';
+        // Redis::zAdd($redis_active_key,$res,$active_code);
+        // $active_url=env('APP_URL').'/active?code='.$active_code;
+        // echo $active_url;die;
         if($res){
             return redirect('/login');
         }
     }
+    //登录视图
     function login(){
         return view('index.login');
     }
@@ -116,4 +124,14 @@ class LoginController extends Controller
         session(['login'=>null]);
         return redirect('/login');
     }
+    //激活码修改
+    // function active(Request $request){
+    //     $active_code=$request->get('code');
+    //     echo "激活码".$active_code;
+    //     $redis_active_key='ss:user:active';
+    //     $id=Redis::zScore($redis_active_key,$active_code);
+    //     echo "<br>"."id:".$id;
+    //     UserModel::where(['id'=>$id])->update(['is_validated'=>1]);
+    //     echo "<br>"."激活成功";
+    // }
 }
