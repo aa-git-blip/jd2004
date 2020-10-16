@@ -25,4 +25,4 @@ Route::get('search','Index\SearchController@search');//列表页
 Route::get('seckill/{goods_id}','Index\SearchController@seckill');//商品详情页
 Route::get('/outlogin','Index\LoginController@outlogin');
 Route::get('/active','Index\LoginController@active');
-
+Route::get('/cartdo','Index\CartController@cartdo');

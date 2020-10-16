@@ -176,7 +176,7 @@
 							<div class="fl">
 								<ul class="btn-choose unstyled">
 									<li>
-										<a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+										<a onclick="cartdo({{$goods->goods_id}},$('.itxt').val())" class="sui-btn  btn-danger addshopcar">加入购物车</a>
 									</li>
 								</ul>
 							</div>
@@ -566,3 +566,17 @@
 	<!-- 底部栏位 -->
 	<!--页面底部-->
     @endsection
+<script>
+    function cartdo(goods_id,buy_number){
+        $.get('/cartdo',{goods_id:goods_id,buy_number:buy_number},function (res){
+            if(res.code == 1){
+                alert(res.msg);
+                location.href="/login?refer="+res.url;
+            }
+
+            if(res.code == 2){
+                alert(res.msg);
+            }
+        },'json')
+    }
+</script>

@@ -65,6 +65,7 @@ class LoginController extends Controller
     //登录方法
     function logindo(Request $request){
         $post=$request->except('_token');
+        // dd($post);
         if($post['name']==''){
             return redirect('/login')->with('msg','非法操作');
         }
@@ -92,7 +93,6 @@ class LoginController extends Controller
         //dd($user);
         //判断
             $count=Redis::get($user['id']);
-
         //$login_time = ceil(Redis::TTL("login_time:".$user->id) / 60);
             $out_time=(ceil((Redis::TTL($user['id'])/60)));
 
@@ -118,7 +118,12 @@ class LoginController extends Controller
         ];
         $res = UserModel::where('id',$user['id'])->update($data);
         session(['login'=>$user]);
-            return redirect('/');
+        Redis::rpush('logtime'.$user->id,time());
+        // dd(request()->refer);
+        if(request()->refer){
+            return redirect(request()->refer);
+        }
+        return redirect('/');
     }
     function outlogin(){
         session(['login'=>null]);

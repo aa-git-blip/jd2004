@@ -32,6 +32,7 @@
                             {{session('msg')}}
                             <form class="sui-form" action="{{url('login/logindo')}}" method="get">
                                 @csrf
+                                <input type="hidden" name="refer" value="{{request()->refer}}">
 								<div class="input-prepend"><span class="add-on loginname"></span>
 									<input id="prependedInput" name="name" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
 								</div>
