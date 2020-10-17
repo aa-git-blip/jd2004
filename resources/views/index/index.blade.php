@@ -3,6 +3,7 @@
 @section('title','首页')
 @section('show')
 
+
 	<!--列表-->
 	<div class="sort">
 		<div class="py-container">
@@ -398,29 +399,29 @@
 				<div class="yui3-u Center banerArea">
 					<!--banner轮播-->
 					<div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
-					  <ol class="carousel-indicators">
-					    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					    <li data-target="#myCarousel" data-slide-to="1"></li>
-					    <li data-target="#myCarousel" data-slide-to="2"></li>
-					  </ol>
-					  <div class="carousel-inner">
-					    <div class="active item">
-					    <a href="http://baidu2.wypxj.com/">
-					    	<img src="/static/img/banner1.jpg"  />
-					      </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="/static/img/banner2.jpg"  />
-					     </a>
-					    </div>
-					    <div class="item">
-						 <a href="http://baidu2.wypxj.com/">
-						<img src="/static/img/banner3.jpg"  />
-						</a>
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="active item">
+                            <a href="http://baidu2.wypxj.com/">
+                                <img src="/static/img/banner1.jpg"  />
+                            </a>
+                            </div>
+                            <div class="item">
+                            <a href="http://baidu2.wypxj.com/">
+                            <img src="/static/img/banner2.jpg"  />
+                            </a>
+                            </div>
+                            <div class="item">
+                            <a href="http://baidu2.wypxj.com/">
+                            <img src="/static/img/banner3.jpg"  />
+                            </a>
 
-					    </div>
-					  </div><a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
+                            </div>
+                        </div><a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
 					</div>
 				</div>
 				<div class="yui3-u Right">
@@ -947,4 +948,27 @@
 			</div>
 		</div>
 	</div>
+	<!--商标-->
+	<div class="brand">
+		<div class="py-container">
+			<ul class="Brand-list blockgary">
+				<li class="Brand-item">
+					<img src="/static/img/brand_21.png" />
+				</li>
+				<li class="Brand-item"><img src="/static/img/brand_03.png" /></li>
+				<li class="Brand-item"><img src="/static/img/brand_05.png" /></li>
+				<li class="Brand-item"><img src="/static/img/brand_07.png" /></li>
+				<li class="Brand-item"><img src="/static/img/brand_09.png" /></li>
+				<li class="Brand-item"><img src="/static/img/brand_11.png" /></li>
+				<li class="Brand-item"><img src="/static/img/brand_13.png" /></li>
+				<li class="Brand-item"><img src="/static/img/brand_15.png" /></li>
+				<li class="Brand-item"><img src="/static/img/brand_17.png" /></li>
+				<li class="Brand-item"><img src="/static/img/brand_19.png" /></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 底部栏位 -->
+	<!--页面底部-->
+
+
     @endsection

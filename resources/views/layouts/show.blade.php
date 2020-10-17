@@ -5,13 +5,12 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>品优购，优质！优质！</title>
-	<link rel="icon" href="/static/img/favicon.ico">
+	<link rel="icon" href="assets//static/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/css/pages-list.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/pages-success-cart.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/widget-cartPanelView.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/pages-list.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/pages-zoom.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/pages-seckill-item.css" />
 </head>
@@ -25,7 +24,7 @@
 		<div class="top">
 			<div class="py-container">
 				<div class="shortcut">
-                    @if(session('login'))
+					@if(session('login'))
                         <ul class="fl">
                             <li class="f-item">品优购欢迎您！</li>
                         <li class="f-item">{{session('login')->name}}   　<span><a href="{{url('/outlogin')}}">退出登录</a></span></li>
@@ -36,7 +35,6 @@
                         <li class="f-item">请<a href="{{url('/login')}}" >登录</a>　<span><a href="{{url('/register')}}" >免费注册</a></span></li>
                         </ul>
                     @endif
-
 					<ul class="fr">
 						<li class="f-item">我的订单</li>
 						<li class="f-item space"></li>
@@ -97,8 +95,8 @@
 					<div class="yui3-u Right shopArea">
 						<div class="fr shopcar">
 							<div class="show-shopcar" id="shopcar">
-								<span class="car"></span>2
-								<a class="sui-btn btn-default btn-xlarge" href="cart.html">
+								<span class="car"></span>
+                            <a class="sui-btn btn-default btn-xlarge" href="{{url('/cart')}}">
 									<span>我的购物车</span>
 									<i class="shopnum">0</i>
 								</a>
@@ -135,27 +133,6 @@
 </div>
 @yield('show')
 
-	<!--商标-->
-	<div class="brand">
-		<div class="py-container">
-			<ul class="Brand-list blockgary">
-				<li class="Brand-item">
-					<img src="/static/img/brand_21.png" />
-				</li>
-				<li class="Brand-item"><img src="/static/img/brand_03.png" /></li>
-				<li class="Brand-item"><img src="/static/img/brand_05.png" /></li>
-				<li class="Brand-item"><img src="/static/img/brand_07.png" /></li>
-				<li class="Brand-item"><img src="/static/img/brand_09.png" /></li>
-				<li class="Brand-item"><img src="/static/img/brand_11.png" /></li>
-				<li class="Brand-item"><img src="/static/img/brand_13.png" /></li>
-				<li class="Brand-item"><img src="/static/img/brand_15.png" /></li>
-				<li class="Brand-item"><img src="/static/img/brand_17.png" /></li>
-				<li class="Brand-item"><img src="/static/img/brand_19.png" /></li>
-			</ul>
-		</div>
-	</div>
-	<!-- 底部栏位 -->
-	<!--页面底部-->
 <div class="clearfix footer">
 	<div class="py-container">
 		<div class="footlink">
@@ -471,6 +448,11 @@ $(function(){
 <script type="text/javascript" src="/static/js/widget/cartPanelView.js"></script>
 <script type="text/javascript" src="/static/js/widget/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="/static/js/widget/nav.js"></script>
+<script type="text/javascript" src="/static/js/plugins/jquery.jqzoom/jquery.jqzoom.js"></script>
+<script type="text/javascript" src="/static/js/plugins/jquery.jqzoom/zoom.js"></script>
+
+
+
 </body>
 
 

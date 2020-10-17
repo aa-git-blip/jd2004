@@ -26,3 +26,4 @@ Route::get('seckill/{goods_id}','Index\SearchController@seckill');//商品详情
 Route::get('/outlogin','Index\LoginController@outlogin');
 Route::get('/active','Index\LoginController@active');
 Route::get('/cartdo','Index\CartController@cartdo');
+Route::get('/cart','Index\CartController@cart');
