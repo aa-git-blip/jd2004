@@ -9,6 +9,10 @@
 
     <link rel="stylesheet" type="text/css" href="/static/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/pages-cart.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/pages-getOrderInfo.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/pages-weixinpay.css" />
+</head>
+
 </head>
 
 <body>
@@ -45,7 +49,19 @@
 			</div>
 		</div>
 	</div>
-
+    <div class="cart py-container">
+		<!--logoArea-->
+		<div class="logoArea">
+			<div class="fl logo"><span class="title">购物车</span></div>
+			<div class="fr search">
+				<form class="sui-form form-inline">
+					<div class="input-append">
+						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
+						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+					</div>
+				</form>
+			</div>
+		</div>
 
 
 @yield('cartadd')
@@ -185,6 +201,8 @@
     <script type="text/javascript" src="/static/js/plugins/jquery.easing/jquery.easing.min.js"></script>
     <script type="text/javascript" src="/static/js/plugins/sui/sui.min.js"></script>
     <script type="text/javascript" src="/static/js/widget/nav.js"></script>
+    <script type="text/javascript" src="components/ui-modules/nav/nav-portal-top.js"></script>
+
     </body>
 
     </html>

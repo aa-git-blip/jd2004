@@ -1,21 +1,9 @@
 
 @extends('layouts.cartadd')
-@section('title','首页')
+@section('title','购物车')
 @section('cartadd')
 
-<div class="cart py-container">
-		<!--logoArea-->
-		<div class="logoArea">
-			<div class="fl logo"><span class="title">购物车</span></div>
-			<div class="fr search">
-				<form class="sui-form form-inline">
-					<div class="input-append">
-						<input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
-						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-					</div>
-				</form>
-			</div>
-		</div>
+
 		<!--All goods-->
 		<div class="allgoods">
 			<h4>全部商品<span>11</span></h4>
@@ -194,7 +182,7 @@
 						<span><em>已节省：</em><i>-¥20.00</i></span>
 					</div>
 					<div class="sumbtn">
-						<a class="sum-btn" href="getOrderInfo.html" target="_blank">结算</a>
+                    <a class="sum-btn" href="{{url('/ement')}}">结算</a>
 					</div>
 				</div>
 			</div>

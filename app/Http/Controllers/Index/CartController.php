@@ -11,6 +11,7 @@ class CartController extends Controller
     public function cart(){
         return view('index.cart');
     }
+
     public function cartdo()
     {
         $user=session('login');

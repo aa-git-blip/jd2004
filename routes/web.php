@@ -27,3 +27,5 @@ Route::get('/outlogin','Index\LoginController@outlogin');
 Route::get('/active','Index\LoginController@active');
 Route::get('/cartdo','Index\CartController@cartdo');
 Route::get('/cart','Index\CartController@cart');
+Route::get('/ement','Index\EmentController@ement');
+Route::get('/pay','Index\EmentController@pay');
