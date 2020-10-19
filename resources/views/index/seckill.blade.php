@@ -577,6 +577,12 @@
             if(res.code == 2){
                 alert(res.msg);
             }
+
+            if(res.code==0 || res.code==3){
+                if(confirm('添加购物车成功，是否跳转购物车列表？')){
+                    location.href="/cart"
+                }
+            }
         },'json')
     }
 </script>
