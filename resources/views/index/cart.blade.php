@@ -26,7 +26,7 @@
                             <div class="cart-list">
                                 <ul class="goods-list yui3-g">
                                     <li class="yui3-u-1-24">
-                                        <input type="checkbox" name="" id="" value="" />
+                                        <input type="checkbox" name="" id="" class="cartid" value="{{$v->id}}" />
                                     </li>
                                     <li class="yui3-u-11-24">
                                         <div class="good-item">
@@ -69,7 +69,7 @@
 						<span><em>已节省：</em><i>-¥20.00</i></span>
 					</div>
 					<div class="sumbtn">
-                    <a class="sum-btn" href="{{url('/ement')}}">结算</a>
+                        <a class="sum-btn" >结算</a>
 					</div>
 				</div>
 			</div>
@@ -225,6 +225,23 @@
 		</div>
 	</div>
 	<!-- 底部栏位 -->
-	<!--页面底部-->
-
+    <!--页面底部-->
+    <script type="text/javascript" src="/static/js/plugins/jquery/jquery.min.js"></script>
+<script>
+    $('.sum-btn').click(function(){
+        var cart_id=new Array();
+        $('.cartid:checked').each(function(){
+            cart_id.push($(this).val());
+        })
+        if(!cart_id.length){
+            alert('你个傻逼不选商品咋结算');
+            return;
+        }
+        if(cart_id){
+            location.href="/ement?cart_id="+cart_id;
+        }
+    })
+</script>
     @endsection
+
+
