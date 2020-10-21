@@ -579,7 +579,7 @@
             }
 
             if(res.code==0 || res.code==3){
-                if(confirm('添加购物车成功，是否跳转购物车列表？')){
+                if(confirm('添加购物车成功，你他妈跳转购物车列表吗？')){
                     location.href="/cart"
                 }
             }

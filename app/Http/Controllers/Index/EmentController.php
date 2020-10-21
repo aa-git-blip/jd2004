@@ -56,7 +56,6 @@ class EmentController extends Controller
             return view('index/useraddress',['address'=>$address]);
         }
     }
-
     public function pay(){
         return view('index.pay');
     }

@@ -52,7 +52,7 @@
 					</div>
 					<div class="step-cont">
 						<ul class="payType">
-							<li class="selected">微信付款<span title="点击取消选择"></span></li>
+							<li class="selected">支付宝付款<span title="点击取消选择"></span></li>
 							<li>货到付款<span title="点击取消选择"></span></li>
 						</ul>
 					</div>
@@ -62,30 +62,32 @@
 					</div>
 					<div class="step-cont">
 						<ul class="send-detail">
+                            @foreach ($goods as $v)
 							<li>
 
 								<div class="sendGoods">
+                                        <ul class="yui3-g">
+                                            <li class="yui3-u-1-6">
+                                                <span><img src="/upload/{{$v->goods_img}}"/ width="100px" height="100px"></span>
+                                            </li>
+                                            <li class="yui3-u-7-12">
+                                                <div class="desc">{{$v->goods_name}}</div>
+                                                <div class="seven">概不退款，打死不退，想让我退，没门。</div>
+                                            </li>
+                                            <li class="yui3-u-1-12">
+                                                <div class="price">￥{{$v->goods_num * $v->shop_price}}.00</div>
+                                            </li>
+                                            <li class="yui3-u-1-12">
+                                                <div class="num">X{{$v->goods_num}}</div>
+                                            </li>
+                                            <li class="yui3-u-1-12">
+                                                <div class="exit">没货你咋买啊   傻dei</div>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-									<ul class="yui3-g">
-										<li class="yui3-u-1-6">
-											<span><img src="/static/img/goods.png"/></span>
-										</li>
-										<li class="yui3-u-7-12">
-											<div class="desc">Apple iPhone 6s (A1700) 64G 玫瑰金色 移动联通电信4G手机硅胶透明防摔软壳 本色系列</div>
-											<div class="seven">7天无理由退货</div>
-										</li>
-										<li class="yui3-u-1-12">
-											<div class="price">￥5399.00</div>
-										</li>
-										<li class="yui3-u-1-12">
-											<div class="num">X1</div>
-										</li>
-										<li class="yui3-u-1-12">
-											<div class="exit">有货</div>
-										</li>
-									</ul>
-								</div>
-							</li>
+                            </li>
+                            @endforeach
 							<li></li>
 							<li></li>
 						</ul>
@@ -291,4 +293,3 @@
     </script>
 
     @endsection
-
