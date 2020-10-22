@@ -2,7 +2,7 @@
 @extends('layouts.show')
 @section('title','详情页')
 @section('show')
-	<div class="py-container">
+    <div class="py-container">
 		<div id="item">
 			<div class="crumb-wrap">
 				<ul class="sui-breadcrumb">
@@ -579,7 +579,7 @@
             }
 
             if(res.code==0 || res.code==3){
-                if(confirm('添加购物车成功，你他妈跳转购物车列表吗？')){
+                if(confirm('添加购物车成功,您要跳转购物车列表吗？')){
                     location.href="/cart"
                 }
             }

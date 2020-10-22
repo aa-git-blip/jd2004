@@ -16,7 +16,6 @@ class LoginController extends Controller
     }
     function regdo(Request $request){
         //验证器可用     不需要make参数
-
         $validator = Validator($request->all(),[
             'name' => 'required|unique:user',
             'password' => 'required',
@@ -38,22 +37,18 @@ class LoginController extends Controller
             ->withInput();
         }
         $data=$request->except('_token');
-
         if($data['password']!=$data['repwd']){
             return redirect('login/reg')->with('msg','两次密码不一致');
         }
+        //使用函数password_hash给密码加密
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $data['last_login']=$_SERVER['REMOTE_ADDR'];
         $data['time']=time();
+        //删除多余参数
         unset($data['repwd']);
         unset($data['m1']);
+        //添加入库
         $res=UserModel::insert($data);
-        //发送激活码
-        // $active_code=Str::random(64);
-        // $redis_active_key='ss:user:active';
-        // Redis::zAdd($redis_active_key,$res,$active_code);
-        // $active_url=env('APP_URL').'/active?code='.$active_code;
-        // echo $active_url;die;
         if($res){
             return redirect('/login');
         }
@@ -66,13 +61,15 @@ class LoginController extends Controller
     function logindo(Request $request){
         $post=$request->except('_token');
         // dd($post);
+        //判断账号是否为空  如果为空    返回登录页面
         if($post['name']==''){
             return redirect('/login')->with('msg','非法操作');
         }
         //dd($post);
-        $add=$_SERVER['REMOTE_ADDR'];
-        $reg='/^1[3|4|5|6|7|8|9]\d{9}$/';
-        $reg_email='/^\w{3,}@([a-z]{2,7}|[0-9]{3})\.(com|cn)$/';
+        $add=$_SERVER['REMOTE_ADDR'];//接收登录IP
+        $reg='/^1[3|4|5|6|7|8|9]\d{9}$/';//手机号正则
+        $reg_email='/^\w{3,}@([a-z]{2,7}|[0-9]{3})\.(com|cn)$/';//邮箱正则
+        //使用三种方法登录 手机号  邮箱  用户名
         if(preg_match($reg,$post['name'])){
             $where=[
                 ['tel',"=",$post['name']]
@@ -86,16 +83,17 @@ class LoginController extends Controller
                 ['name',"=",$post['name']]
             ];
         }
+        //查询用户名下的所有数据
         $user = UserModel::where($where)->first();
         if(!$user){
             return redirect('/login')->with('msg','用户不存在');
         }
         //dd($user);
         //判断
-            $count=Redis::get($user['id']);
+        $count=Redis::get($user['id']);
         //$login_time = ceil(Redis::TTL("login_time:".$user->id) / 60);
+            //记录锁定时间
             $out_time=(ceil((Redis::TTL($user['id'])/60)));
-
             //判断错误次数
             if($count>=5){
                     return redirect('/login')->with('msg','密码错误次数过多,请'.$out_time.'分钟后在来');
@@ -107,16 +105,20 @@ class LoginController extends Controller
             $count=Redis::get($user->id);
             //判断错误次数
             if($count>=5){
+                //时间限制
                 Redis::SETEX($user->id,60*60,5);
                     return redirect('/login')->with('msg','密码错误次数过多,请一个小时候在来');
             }
             return redirect('/login')->with('msg','密码错误'.$count.'次，五次后锁定一小时');
         }
+        //将时间和IP转化为数组
         $data=[
             'last_login'=>time(),
             'login_ip'=>$add
         ];
+        //使用修改方式将数据添加到表中
         $res = UserModel::where('id',$user['id'])->update($data);
+        //存入session
         session(['login'=>$user]);
         Redis::rpush('logtime'.$user->id,time());
         // dd(request()->refer);
@@ -125,18 +127,10 @@ class LoginController extends Controller
         }
         return redirect('/');
     }
+    //退出方式
     function outlogin(){
+        //删除session里的值     实现退出功能
         session(['login'=>null]);
         return redirect('/login');
     }
-    //激活码修改
-    // function active(Request $request){
-    //     $active_code=$request->get('code');
-    //     echo "激活码".$active_code;
-    //     $redis_active_key='ss:user:active';
-    //     $id=Redis::zScore($redis_active_key,$active_code);
-    //     echo "<br>"."id:".$id;
-    //     UserModel::where(['id'=>$id])->update(['is_validated'=>1]);
-    //     echo "<br>"."激活成功";
-    // }
 }
