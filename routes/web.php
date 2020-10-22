@@ -28,6 +28,7 @@ Route::get('/active','Index\LoginController@active');//
 Route::get('/cartdo','Index\CartController@cartdo');
 Route::get('/cart','Index\CartController@cart');//购物车
 Route::get('/ement','Index\EmentController@ement');//地址
-Route::get('/pay','Index\EmentController@pay');//结算
+Route::get('/pay/{id}','Index\EmentController@pay');//结算
 Route::get('/getsonaddress','Index\EmentController@getsonaddress');//结算
 Route::get('/useraddressadd','Index\EmentController@useraddressadd');//结算
+Route::any('/order','Index\EmentController@order');//结算

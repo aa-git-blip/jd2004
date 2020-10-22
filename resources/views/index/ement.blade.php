@@ -13,10 +13,13 @@
 			<div class="checkout-steps">
 				<!--收件人信息-->
 				<div class="step-tit">
-					<h5>收件人信息<span><a data-toggle="modal" data-target=".edit" data-keyboard="false" class="newadd">新增收货地址</a></span></h5>
+					<h5>收件人信息<span><a dat  a-toggle="modal" data-target=".edit" data-keyboard="false" class="newadd">新增收货地址</a></span></h5>
 				</div>
 				<div class="step-cont">
 					<div class="addressInfo">
+                        <input type="hidden" name="address_id" value="">
+						<input type="hidden" name="pay_type" value="">
+						<input type="hidden" name="rec_id" value="{{request()->cart_id}}">
 						<ul class="addr-detail">
 							<li class="addr-item">
 
@@ -52,8 +55,9 @@
 					</div>
 					<div class="step-cont">
 						<ul class="payType">
-							<li class="selected">支付宝付款<span title="点击取消选择"></span></li>
-							<li>货到付款<span title="点击取消选择"></span></li>
+							<li pay_type=1 class="selected">微信付款<span title="点击取消选择"></span></li>
+                                <li pay_type=2 >支付宝<span title="点击取消选择"></span></li>
+                                <li pay_type=3 >货到付款<span title="点击取消选择"></span></li>
 						</ul>
 					</div>
 					<div class="hr"></div>
@@ -132,7 +136,7 @@
 			<div class="fc-receiverInfo">寄送至:北京市海淀区三环内 中关村软件园9号楼 收货人：某某某 159****3201</div>
 		</div>
 		<div class="submit">
-            <a class="sui-btn btn-danger btn-xlarge" href="{{url('pay')}}">提交订单</a>
+            <button class="sui-btn btn-danger btn-xlarge" type="submit">提交订单</button>
         </div>
         </form>
         <!--添加地址-->
@@ -289,7 +293,35 @@
 
 		})
 	})
+    //页面加载事件
+	$(function(){
+		var address_id = $('.selected').attr('address_id');
+		var pay_type = $('.payType .selected').attr('pay_type');
 
+		$('input[name="address_id"]').val(address_id);
+		$('input[name="pay_type"]').val(pay_type);
+
+		//选择收货地址
+		$('.choiceuser').click(function(){
+
+			var address_id = $(this).attr('address_id');
+			//alert(address_id);
+			$('input[name="address_id"]').val(address_id);
+			$(this).parents('div').siblings().find('div').removeClass("selected");
+			$(this).addClass("selected");
+		})
+
+		//选择支付方式
+		$('.payType li').click(function(){
+			var pay_type = $(this).attr('pay_type');
+            $(this).siblings('li').removeClass('selected');
+            $(this).addClass("selected");
+			// alert(pay_type);
+			$('input[name="pay_type"]').val(pay_type);
+		})
+
+
+	})
     </script>
 
     @endsection

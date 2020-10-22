@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Model\User_address;
 use App\Model\Region;
 use App\Model\Cart;
+use App\Model\Order_info;
+use App\Model\Order_goods;
+use App\Model\Goods;
+use Illuminate\Support\Facades\DB;
 class EmentController extends Controller
 {
     public function ement(){
@@ -56,6 +60,84 @@ class EmentController extends Controller
             return view('index/useraddress',['address'=>$address]);
         }
     }
+    //订单
+    public function order(Request $request){
+    DB::beginTransaction();
+        try {
+        $data = $request->except('_token');
+        //dd($data);
+        $rec_id = $data['rec_id'];
+        $data['order_sn'] = $this->createOrderSn();
+        $data['user_id'] = session('login')->id;
+        if($data['address_id']){
+            $useraddress = User_address::where('address_id',$data['address_id'])->first();
+            $useraddress = $useraddress?$useraddress->toArray():[];
+        }
+        $data = array_merge($data,$useraddress);
+        $pay_name = ['1'=>'微信','2'=>'支付宝','3'=>'货到付款'];
+        $data['pay_name'] = $pay_name[$data['pay_type']];
+        $data['goods_price'] = Cart::getprice($data['rec_id']);
+        $data['order_price'] = $data['goods_price'];
+        $data['addtime'] = time();
+        unset($data['address_id']);
+        unset($data['is_default']);
+        unset($data['rec_id']);
+        unset($data['address_name']);
+        // unset($data['user_id']);
+        //添加入库订单表 获取订单id
+        $order_id = Order_info::insertGetId($data);
+        // dd($order_id);
+
+        //订单商品表入库
+
+        if(is_string($rec_id)){
+            $rec_id = explode(',',$rec_id);
+        }
+        $goods = Cart::select('p_cart.*','p_goods.goods_img')->leftjoin('p_goods','p_cart.goods_id','=','p_goods.goods_id')->whereIn('id',$rec_id)->get();
+        $goods = $goods?$goods->toArray():[];
+        foreach($goods as $k=>$v){
+            $goods[$k]['order_id'] = $order_id;
+            $goods[$k]['buy_number'] = $v['goods_num'];
+            $goods[$k]['shop_price'] = Goods::where('goods_id',$v['goods_id'])->value('shop_price');
+            unset($goods[$k]['rec_id']);
+            unset($goods[$k]['uid']);
+            unset($goods[$k]['add_time']);
+            unset($goods[$k]['id']);
+            unset($goods[$k]['goods_num']);
+            unset($goods[$k]['is_delete']);
+        }
+        $res = Order_goods::insert($goods);
+        if($res){
+            // dump('拿下！');
+            //清除购物车数据
+            Cart::destroy($rec_id);
+            foreach($goods as $k=>$v){
+                Goods::where('goods_id',$v['goods_id'])->decrement('goods_number',$v['buy_number']);
+            }
+        }
+
+        DB::commit();
+
+        return redirect('/pay/'.$order_id );
+        } catch (\Throwable $e) {
+            return $e->getMessage();
+            DB::rollBack();
+        }
+    }
+    //生成货号
+    public function createOrderSn(){
+        $order_sn =  date('YmdHis').rand(1000,9999);
+        if($this->isHaveOrdersn($order_sn)){
+            $this->createOrderSn();
+        }
+        return $order_sn;
+    }
+
+    //判断货号是否重复
+    public function isHaveOrdersn($order_sn){
+        return Order_info::where('order_sn',$order_sn)->count();
+    }
+
     public function pay(){
         return view('index.pay');
     }
