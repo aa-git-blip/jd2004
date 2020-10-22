@@ -8,6 +8,7 @@ class OrderController extends Controller
 {
     //
     function order(){
+        dd(111);
         return view('index.order');
     }
 }
