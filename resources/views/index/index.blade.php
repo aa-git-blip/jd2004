@@ -533,7 +533,7 @@
 					</div>
 				</li>
 				<li class="yui3-u-5-24">
-					<a href="list.html" target="_blank"><img src="/static/img/today01.png" /></a>
+                <a href="{{url('/search')}}"><img src="/static/img/today01.png" /></a>
 				</li>
 				<li class="yui3-u-5-24">
 					<img src="/static/img/today02.png" />

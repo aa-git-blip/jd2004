@@ -137,7 +137,7 @@ class EmentController extends Controller
     public function isHaveOrdersn($order_sn){
         return Order_info::where('order_sn',$order_sn)->count();
     }
-
+    //支付
     public function pay(){
         return view('index.pay');
     }

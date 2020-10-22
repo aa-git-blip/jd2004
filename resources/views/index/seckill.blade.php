@@ -25,7 +25,7 @@
 					<div class="zoom">
 						<!--默认第一个预览-->
 						<div id="preview" class="spec-preview">
-							<span class="jqzoom"><img jqimg="/static/img/_/b1.png" src="/upload/{{$goods->goods_img}}" width="400px" height="500"/></span>
+							<span class="jqzoom"><img jqimg="/upload/{{$goods->goods_img}}" src="/upload/{{$goods->goods_img}}" width="400px" height="500"/></span>
 						</div>
 						<!--下方的缩略图-->
 						<div class="spec-scroll">
@@ -33,15 +33,15 @@
 							<!--左右按钮-->
 							<div class="items">
 								<ul>
-									<li><img src="/static/img/_/s1.png" bimg="/static/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s2.png" bimg="/static/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s3.png" bimg="/static/img/_/b3.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s1.png" bimg="/static/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s2.png" bimg="/static/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s3.png" bimg="/static/img/_/b3.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s1.png" bimg="/static/img/_/b1.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s2.png" bimg="/static/img/_/b2.png" onmousemove="preview(this)" /></li>
-									<li><img src="/static/img/_/s3.png" bimg="/static/img/_/b3.png" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
+									<li><img src="/upload/{{$goods->goods_img}}" bimg="/upload/{{$goods->goods_img}}" onmousemove="preview(this)" /></li>
 								</ul>
 							</div>
 							<a class="next">&gt;</a>

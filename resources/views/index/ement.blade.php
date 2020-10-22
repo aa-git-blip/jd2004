@@ -227,7 +227,7 @@
 
                                <!--确认地址-->
           </div>
-    <div class="sui-modal-backdrop fade in" style="background:#000;;display: none;"></div>
+        <div class="sui-modal-backdrop fade in" style="background:#000;;display: none;"></div>
 
     <script type="text/javascript" src="/static/js/plugins/jquery/jquery.min.js"></script>
     <script>
@@ -303,7 +303,7 @@
 
 		//选择收货地址
 		$('.choiceuser').click(function(){
-
+            //alert(111);
 			var address_id = $(this).attr('address_id');
 			//alert(address_id);
 			$('input[name="address_id"]').val(address_id);
