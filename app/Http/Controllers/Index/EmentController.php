@@ -10,6 +10,7 @@ use App\Model\Cart;
 use App\Model\Order_info;
 use App\Model\Order_goods;
 use App\Model\Goods;
+use App\Model\Collect;
 use Illuminate\Support\Facades\DB;
 class EmentController extends Controller
 {
@@ -154,7 +155,7 @@ class EmentController extends Controller
             $out_trade_no = $order->order_sn;
 
             //订单名称，必填
-            $subject = '大傻叉';
+            $subject = '大哥大';
 
             //付款金额，必填
             $total_amount = $order->order_price;
@@ -184,7 +185,7 @@ class EmentController extends Controller
             var_dump($response);
         // return view('index.pay');
     }
-
+    //同步跳转
     public function return_url(){
         /* *
         * 功能：支付宝页面跳转同步通知页面
@@ -232,6 +233,21 @@ class EmentController extends Controller
         else {
             //验证失败
             echo "验证失败";
+        }
+    }
+    //商品收藏
+    public function collect()
+    {
+        $data = request()->all();
+        $data['uid']=session('login')->id;
+        $res=Collect::where($data)->get();
+        $res=$res?$res->toArray():[];
+        if(count($res)>0){
+            return json_encode(['code'=>0,'msg'=>"已有此收藏"]);
+        }
+        $rest = Collect::insert($data);
+        if($rest){
+            return json_encode(['code'=>1,'msg'=>"收藏成功"]);
         }
     }
 }

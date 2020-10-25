@@ -179,6 +179,13 @@
 										<a onclick="cartdo({{$goods->goods_id}},$('.itxt').val())" class="sui-btn  btn-danger addshopcar">加入购物车</a>
 									</li>
 								</ul>
+                            </div>
+                            <div class="fl">
+								<ul class="btn-choose unstyled">
+									<li>
+										<a class="sui-btn  btn-danger addshopcar" id="fva">收藏</a>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -429,7 +436,7 @@
 								<p>售后保障</p>
 							</div>
 							<div id="four" class="tab-pane">
-								<p>商品评价</p>
+								<p>1111</p>
 							</div>
 							<div id="five" class="tab-pane">
 								<p>手机社区</p>
@@ -564,8 +571,10 @@
 		</div>
 	</div>
 	<!-- 底部栏位 -->
-	<!--页面底部-->
-    @endsection
+    <!--页面底部-->
+    <script type="text/javascript" src="/static/js/plugins/jquery/jquery.min.js"></script>
+
+
 <script>
     function cartdo(goods_id,buy_number){
         $.get('/cartdo',{goods_id:goods_id,buy_number:buy_number},function (res){
@@ -585,5 +594,20 @@
             }
         },'json')
     }
+    $(document).on('click','#fva',function(){
+        var goods_id = "{{$goods->goods_id}}"
+        if(goods_id==''){
+            alert("非法操作")
+        }
+        $.get('/collect',{goods_id:goods_id},function(res){
+            //alert(res)
+            if(res.code==1){
+                alert(res.msg);
+            }else{
+                alert(res.msg)
+            }
+        },'json')
+    })
 </script>
 
+@endsection
