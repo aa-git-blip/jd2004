@@ -17,6 +17,8 @@ class SearchController extends Controller
     function seckill($goods_id){
         // Redis::flushall();
         // die;
+        $hit=Redis::zincrby('visit',1,'hit_'.$goods_id);//点击量
+        // dd($hit);
         $goods=Redis::get('goods_'.$goods_id);
         if(!$goods){
             $goods=Goods::find($goods_id);
