@@ -64,7 +64,7 @@ class EmentController extends Controller
     //订单
     public function order(Request $request){
         //事务
-    DB::beginTransaction();
+        DB::beginTransaction();
         try {
         $data = $request->except('_token');
         //dd($data);
@@ -236,12 +236,13 @@ class EmentController extends Controller
         }
     }
     //商品收藏
-    public function collect()
-    {
-        $data = request()->all();
-        $data['uid']=session('login')->id;
-        $res=Collect::where($data)->get();
-        $res=$res?$res->toArray():[];
+    public function collect(){
+        $data = request()->all();//接收商品id
+        // dd($data);
+        $data['uid']=session('login')->id;//调出用户id
+        $res=Collect::where($data)->get();//查询
+        // dd($res);
+        $res=$res?$res->toArray():[];//转化为数组
         if(count($res)>0){
             return json_encode(['code'=>0,'msg'=>"已有此收藏"]);
         }

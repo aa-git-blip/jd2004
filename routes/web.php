@@ -31,5 +31,5 @@ Route::get('/ement','Index\EmentController@ement');//地址
 Route::get('/pay/{id}','Index\EmentController@pay');//结算
 Route::get('/getsonaddress','Index\EmentController@getsonaddress');//结算
 Route::get('/useraddressadd','Index\EmentController@useraddressadd');//结算
-Route::any('/order','Index\EmentController@order');//结算
-Route::any('/collect','Index\EmentController@collect');//结算
+Route::any('/order','Index\EmentController@order');//支付
+Route::any('/collect','Index\EmentController@collect');//收藏

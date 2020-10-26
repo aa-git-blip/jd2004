@@ -588,7 +588,7 @@
             }
 
             if(res.code==0 || res.code==3){
-                if(confirm('添加购物车成功,您要跳转购物车列表吗？')){
+                if(confirm('添加购物车成功,您要跳转购车列表吗？')){
                     location.href="/cart"
                 }
             }
