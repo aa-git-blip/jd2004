@@ -377,7 +377,7 @@
 							</div>
 						</div>
 						<div class="item">
-							<h3><a href="">彩票、旅行</a></h3>
+							<h3><a href="{{url('/prize')}}">彩票、旅行</a></h3>
 						</div>
 						<div class="item">
 							<h3><a href="">理财、众筹</a></h3>
@@ -465,7 +465,7 @@
 						</li>
 						<li class="yui3-u-1-4 life-item notab-item">
 							<i class="list-item list-item-5"></i>
-							<span class="service-intro">彩票</span>
+							<span class="service-intro"><a href="{{url('/prize')}}">彩票</a></span>
 						</li>
 						<li class="yui3-u-1-4 life-item notab-item">
 							<i class="list-item list-item-6"></i>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Redis;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Goods;
+use App\Model\Comment;
 class IndexController extends Controller
 {
     //
@@ -31,5 +32,26 @@ class IndexController extends Controller
 
         }
         return view('index.index',compact('hot'));//compact传值
+    }
+    //评论
+    function comment(){
+        $goods_id=request()->goods_id;
+        $comment_desc=request()->comment_desc;
+
+        // dd($data);
+        $uid=session('login')->id;
+        //dd($uid);
+        $data=[
+            'goods_id'=>$goods_id,
+            'comment_desc'=>$comment_desc,
+            'uid'=>$uid,
+            'time'=>time()
+        ];
+        $res = Comment::insert($data);
+
+        $comment = Comment::where('goods_id',$goods_id)->get();
+        // dd($comment);
+
+        // dd($data);
     }
 }

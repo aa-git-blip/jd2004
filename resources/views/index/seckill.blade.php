@@ -436,7 +436,25 @@
 								<p>售后保障</p>
 							</div>
 							<div id="four" class="tab-pane">
-								<p>1111</p>
+								<p>
+                                <form action="{{url('/comment')}}" method="GET">
+                                        <table>
+                                            <tr>
+                                            <input type="hidden" name="goods_id" value="{{$goods->goods_id}}">
+                                                <td>发表评论</td>
+                                                <td>
+                                                    <textarea name="comment_desc" id="" cols="30" rows="10"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <button type="submit">评论</button>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </p>
 							</div>
 							<div id="five" class="tab-pane">
 								<p>手机社区</p>
