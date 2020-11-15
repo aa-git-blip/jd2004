@@ -230,12 +230,11 @@
 								<div class="attr">
                                 <em>{{$v->goods_name}}</em>
 								</div>
-								<div class="cu">
-									<em><span>促</span>满一件可参加超值换购</em>
-								</div>
-								<div class="commit">
-									<i class="command">已有2000人评价</i>
-								</div>
+                                <div class="fl price">
+                                    <i>此商品以降价</i>
+                                        <em>{{$v->goods_newest}}</em>
+                                </div>
+
 								<div class="operate">
 									<a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
 									<a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>

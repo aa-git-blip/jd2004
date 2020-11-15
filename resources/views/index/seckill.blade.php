@@ -63,12 +63,20 @@
 						<div class="summary-wrap">
 
 							<div class="fl title">
-								<i>价　　格</i>
+								<i>原价　　格</i>
 							</div>
 							<div class="fl price">
 								<i>¥</i>
                                     <em>{{$goods->shop_price}}</em>
 								<span>降价通知</span>
+                            </div>
+                            <div class="fl price">
+								<i>此商品以降价</i>
+                                    <em>{{$goods->goods_newest}}</em>
+                            </div>
+                            <div class="fl price">
+								<i>现价</i>
+                                    <em>{{$goods->goods_aaa}}</em>
 							</div>
 							<div class="fr remark">
 								<i>累计评价</i><em>612188</em>
@@ -590,7 +598,7 @@
 	</div>
 	<!-- 底部栏位 -->
     <!--页面底部-->
-    <script type="text/javascript" src="/static/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/plugins/jquery/jquery.min.js"></script>
 
 
 <script>
@@ -604,7 +612,10 @@
             if(res.code == 2){
                 alert(res.msg);
             }
-
+            //限制购物车条数
+            if(res.code == 5){
+                alert(res.msg);
+            }
             if(res.code==0 || res.code==3){
                 if(confirm('添加购物车成功,您要跳转购车列表吗？')){
                     location.href="/cart"

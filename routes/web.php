@@ -36,4 +36,6 @@ Route::any('/collect','Index\EmentController@collect');//收藏
 Route::any('/prize','Index\PrizeController@prize');//抽奖
 Route::any('/add','Index\PrizeController@add');//抽奖方法
 Route::any('/comment','Index\IndexController@comment');//抽奖方法
-
+Route::any('/coupon','Index\CouponController@coupon');//抽奖方法
+Route::any('/couponadd','Index\CouponController@couponadd');//抽奖方法
+Route::any('/test','Index\CouponController@test')->middleware('check.login');//抽奖方法

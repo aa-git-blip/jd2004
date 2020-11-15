@@ -11,9 +11,9 @@
 				<div class="yui3-g cart-th">
 					<div class="yui3-u-1-4"><input type="checkbox" name="" id="" value="" /> 全部</div>
 					<div class="yui3-u-1-4">商品</div>
-					<div class="yui3-u-1-8">单价（元）</div>
+					<div class="yui3-u-1-8">优惠价</div>
 					<div class="yui3-u-1-8">数量</div>
-					<div class="yui3-u-1-8">小计（元）</div>
+					<div class="yui3-u-1-8">原价（元）</div>
 					<div class="yui3-u-1-8">操作</div>
 				</div>
 				<div class="cart-item-list">
@@ -33,15 +33,16 @@
                                         <div class="item-img"><img src="/upload/{{$v->goods_img}}" /></div>
                                         <div class="item-msg">{{$v->goods_name}}</div>
                                         </div>
+                                        <div class="item-msg"><h3><font color="red">此商品以优惠{{$v->goods_newest}}.00元</font></h3></div>
                                     </li>
 
-                                <li class="yui3-u-1-8"><span class="price">{{$v->shop_price}}</span></li>
+                                <li class="yui3-u-1-8"><span class="price">{{$v->goods_aaa}}.00</span></li>
                                     <li class="yui3-u-1-8">
                                         <a href="javascript:void(0)" class="increment mins">-</a>
                                         <input autocomplete="off" type="text" value="{{$v->goods_num}}" minnum="1" class="itxt" />
                                         <a href="javascript:void(0)" class="increment plus">+</a>
                                     </li>
-                                    <li class="yui3-u-1-8"><span class="sum">{{$v->goods_num * $v->shop_price}}.00</span></li>
+                                    <li class="yui3-u-1-8"><span class="sum">{{ $v->shop_price}}</span></li>
                                     <li class="yui3-u-1-8">
                                         <a href="#none">删除</a><br />
                                         <a href="#none">移到我的关注</a>
